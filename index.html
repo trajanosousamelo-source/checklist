@@ -20,6 +20,7 @@
   --border:rgba(0,0,0,0.10);--border2:rgba(0,0,0,0.18);
   --text:#1a1a18;--text2:#6b6b66;--text3:#9b9b95;
   --green:#2d7a4f;--green-bg:#eaf5ee;--green-border:rgba(45,122,79,0.25);
+  --blue:#1a4f8a;--blue-bg:#eaf0fa;--blue-border:rgba(26,79,138,0.2);
   --radius:10px;--radius-lg:14px;
 }
 body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
@@ -27,8 +28,8 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--text);min-he
 .header{margin-bottom:1.5rem;}
 .header h1{font-size:22px;font-weight:700;}
 .header p{font-size:13px;color:var(--text2);margin-top:3px;}
-.tabs{display:flex;gap:4px;background:var(--surface2);border-radius:var(--radius);padding:4px;margin-bottom:1.5rem;}
-.tab{flex:1;padding:8px 4px;font-size:13px;font-weight:700;text-align:center;border:none;background:transparent;color:var(--text2);border-radius:8px;cursor:pointer;transition:all 0.15s;}
+.tabs{display:flex;gap:3px;background:var(--surface2);border-radius:var(--radius);padding:4px;margin-bottom:1.5rem;}
+.tab{flex:1;padding:8px 2px;font-size:12px;font-weight:700;text-align:center;border:none;background:transparent;color:var(--text2);border-radius:8px;cursor:pointer;transition:all 0.15s;}
 .tab.active{background:var(--surface);color:var(--text);border:0.5px solid var(--border2);}
 .section-label{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;margin:1.25rem 0 8px;}
 .section-label:first-of-type{margin-top:0;}
@@ -62,8 +63,6 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--text);min-he
 .bar-fill{height:5px;border-radius:3px;background:var(--green);transition:width 0.5s ease;}
 .stat-sub{font-size:11px;color:var(--text3);margin-top:5px;}
 .page{display:none;}.page.active{display:block;}
-
-/* Filter box */
 .filter-box{background:var(--surface);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:13px 14px;margin-bottom:1.25rem;}
 .filter-title{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px;}
 .filter-row{display:flex;gap:8px;margin-bottom:8px;}
@@ -74,8 +73,6 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--text);min-he
 .filter-error{font-size:12px;color:#c0392b;min-height:16px;margin-bottom:4px;}
 .filter-btn{width:100%;padding:10px;background:var(--text);border:none;border-radius:var(--radius);font-size:13px;font-weight:700;color:#fff;cursor:pointer;transition:opacity 0.15s;}
 .filter-btn:active{opacity:0.85;}
-
-/* History blocks */
 .hist-block{background:var(--surface);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:14px;margin-bottom:1rem;}
 .hist-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
 .hist-title{font-size:14px;font-weight:700;}
@@ -88,12 +85,20 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--text);min-he
 .hist-table td{padding:6px 6px;border-bottom:0.5px solid var(--border);vertical-align:middle;}
 .hist-table tr:last-child td{border-bottom:none;}
 .empty{text-align:center;padding:3rem 0;font-size:14px;color:var(--text3);}
-
-/* Filtered result block */
 .filtered-block{background:var(--surface);border:1.5px solid var(--green-border);border-radius:var(--radius-lg);padding:14px;margin-bottom:1.25rem;}
 .filtered-block .hist-title{color:var(--green);}
-
-/* Modals */
+.tema-header{background:var(--blue-bg);border:0.5px solid var(--blue-border);border-radius:var(--radius-lg);padding:13px 14px;margin-bottom:1.25rem;}
+.tema-titulo{font-size:15px;font-weight:700;color:var(--blue);margin-bottom:3px;}
+.tema-mes{font-size:12px;color:var(--text2);}
+.tema-q-block{background:var(--surface);border:0.5px solid var(--border);border-radius:var(--radius);padding:13px;margin-bottom:10px;}
+.tema-q-num{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:5px;}
+.tema-q-text{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;line-height:1.4;}
+.tema-q-resp{width:100%;min-height:80px;padding:9px 11px;font-size:13px;border:0.5px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--text);font-family:inherit;resize:vertical;outline:none;line-height:1.5;}
+.tema-q-resp:focus{border-color:var(--blue);}
+.tema-save-btn{width:100%;margin-top:1rem;padding:12px;background:var(--blue);border:none;border-radius:var(--radius);font-size:14px;font-weight:700;color:#fff;cursor:pointer;transition:opacity 0.15s;}
+.tema-save-btn:active{opacity:0.85;}
+.tema-export-row{display:flex;gap:8px;margin-top:10px;}
+.tema-export-row button{flex:1;padding:9px;font-size:12px;font-weight:700;border-radius:var(--radius);border:0.5px solid var(--border2);background:var(--surface2);cursor:pointer;color:var(--text);}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;z-index:200;padding:1rem;}
 .modal{background:var(--surface);border-radius:var(--radius-lg);border:0.5px solid var(--border2);padding:1.5rem;width:100%;max-width:370px;max-height:90vh;overflow-y:auto;}
 .modal h2{font-size:17px;font-weight:700;margin-bottom:6px;}
@@ -126,6 +131,7 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--text);min-he
   <div class="tabs">
     <button class="tab active" onclick="goTo('checklist')">Checklist</button>
     <button class="tab" onclick="goTo('stats')">Estatísticas</button>
+    <button class="tab" onclick="goTo('tema')">Tema</button>
     <button class="tab" onclick="goTo('history')">Histórico</button>
   </div>
 
@@ -152,6 +158,21 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--text);min-he
     <div id="stats-ve"></div>
   </div>
 
+  <div id="page-tema" class="page">
+    <div class="tema-header">
+      <div class="tema-titulo" id="tema-titulo"></div>
+      <div class="tema-mes" id="tema-mes"></div>
+    </div>
+    <div id="tema-perguntas"></div>
+    <button class="tema-save-btn" onclick="saveTema()">Salvar respostas</button>
+    <div class="saved-msg" id="tema-saved-msg"></div>
+    <div class="tema-export-row">
+      <button onclick="exportTemaPDF()">Exportar PDF</button>
+      <button onclick="exportTemaExcel()">Exportar Excel</button>
+      <button onclick="exportTemaPNG()">Exportar PNG</button>
+    </div>
+  </div>
+
   <div id="page-history" class="page">
     <div class="filter-box">
       <div class="filter-title">Relatório por período</div>
@@ -173,7 +194,6 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--text);min-he
   </div>
 </div>
 
-<!-- Modal: nome -->
 <div class="overlay" id="modal-name">
   <div class="modal">
     <h2>Bem-vindo!</h2>
@@ -185,7 +205,6 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--text);min-he
   </div>
 </div>
 
-<!-- Modal: data início novo ciclo -->
 <div class="overlay" id="modal-newdate" style="display:none;">
   <div class="modal">
     <h2>Encerrar ciclo atual</h2>
@@ -198,7 +217,6 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--text);min-he
   </div>
 </div>
 
-<!-- Modal: revisão de notas -->
 <div class="overlay" id="modal-review" style="display:none;">
   <div class="modal">
     <h2>Revisar notas</h2>
@@ -211,7 +229,6 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--text);min-he
   </div>
 </div>
 
-<!-- Modal: confirmar exclusão -->
 <div class="overlay" id="modal-delete" style="display:none;">
   <div class="modal">
     <h2>Apagar ciclo?</h2>
@@ -224,394 +241,593 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--text);min-he
 </div>
 
 <script>
-const PCE=[
-  {id:'escuta',   label:'Escuta da Palavra',         freq:'diário'},
-  {id:'meditacao',label:'Meditação',                 freq:'diário'},
-  {id:'oracao',   label:'Oração Conjugal',            freq:'diário'},
-  {id:'regra',    label:'Regra de Vida',              freq:'diário'},
-  {id:'sentar',   label:'Dever de Sentar-se',         freq:'mensal'},
-  {id:'retiro',   label:'Retiro',                     freq:'anual', tipo:'sn'},
+// =====================================================================
+// TEMA DE ESTUDO — EDITE AQUI TODO MES
+// Troque o titulo, o mes e as perguntas abaixo.
+// =====================================================================
+var TEMA_TITULO = 'Perguntas para a Reunião de Equipe';
+var TEMA_MES = 'Abril / 2026';
+var TEMA_PERGUNTAS = [
+  'No início da reflexão, depois de nos colocarmos sob o olhar de Deus, tomemos um momento para refletir individualmente, com papel e caneta em mãos, e façamos um esforço de memória e clareza para responder as duas seguintes perguntas: O que me agradou no outro durante os primeiros tempos do nosso encontro? Consigo nomear todas as qualidades e belezas que ainda descubro hoje no meu cônjuge?',
+  'Depois desse tempo suficientemente significativo, partilhemos entre nós o que escrevemos e dialoguemos.',
+  'Sobre a solidão: Quando adolescente ou jovem adulto, eu sentia esse sentimento antes de conhecer meu futuro cônjuge? Vamos compartilhar sobre esse estado de solidão, sua evolução desde o início de nossa relação e após vários anos de casamento.',
+  'Vemos alguma relação entre nosso próprio sentimento de solidão e a proximidade com Deus? Alguma solidão nos aproximou de Deus? De que maneira?',
+  'Quais são nossos modos de comunicação preferidos? Eles mudaram ao longo dos anos? Como levamos em conta nossa própria linguagem corporal e a do nosso cônjuge? Vamos compartilhar qual lugar ocupa a ternura em nossa relação conjugal.',
+  'Amar é aprender a conhecer o outro a cada dia mais. Isso é algo que sempre teremos que descobrir na escuta e no compartilhar. Podemos identificar o que impede a comunicação com nosso cônjuge? Podemos buscar juntos como desativar esses obstáculos? Propósito para o mês: A partir do tema de estudo e das reflexões da reunião, definir uma forma concreta para que a nossa espiritualidade conjugal possa crescer e se aprofundar.'
 ];
-const VE=[
-  {id:'magnificat',label:'Magnificat',               freq:'diário', tipo:'graded'},
-  {id:'missa_r',   label:'Missa de Responsabilidade',freq:'semanal',tipo:'sn'},
-  {id:'tema',      label:'Tema de Estudos',           freq:'mensal', tipo:'sn'},
-  {id:'carta',     label:'Carta Mensal',              freq:'mensal', tipo:'sn'},
-  {id:'missa_ens', label:'Missa Mensal - ENS',        freq:'mensal', tipo:'sn'},
+// =====================================================================
+
+var PCE = [
+  {id:'escuta',    label:'Escuta da Palavra',          freq:'diario'},
+  {id:'meditacao', label:'Meditacao',                  freq:'diario'},
+  {id:'oracao',    label:'Oracao Conjugal',             freq:'diario'},
+  {id:'regra',     label:'Regra de Vida',               freq:'diario'},
+  {id:'sentar',    label:'Dever de Sentar-se',          freq:'mensal'},
+  {id:'retiro',    label:'Retiro',                      freq:'anual', tipo:'sn'}
+];
+var VE = [
+  {id:'magnificat', label:'Magnificat',                freq:'diario',  tipo:'graded'},
+  {id:'missa_r',    label:'Missa de Responsabilidade', freq:'semanal', tipo:'sn'},
+  {id:'tema',       label:'Tema de Estudos',           freq:'mensal',  tipo:'sn'},
+  {id:'carta',      label:'Carta Mensal',              freq:'mensal',  tipo:'sn'},
+  {id:'missa_ens',  label:'Missa Mensal - ENS',        freq:'mensal',  tipo:'sn'}
 ];
 
-const LS={
-  get(k,d){try{const v=localStorage.getItem(k);return v===null?d:JSON.parse(v);}catch{return d;}},
-  set(k,v){localStorage.setItem(k,JSON.stringify(v));}
-};
+function lsGet(k, d) {
+  try { var v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch(e) { return d; }
+}
+function lsSet(k, v) { localStorage.setItem(k, JSON.stringify(v)); }
 
-function todayStr(){return new Date().toISOString().slice(0,10);}
-function fmtDate(d){if(!d)return'—';return new Date(d+'T12:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'});}
-function weekKey(ds){const d=new Date(ds+'T12:00:00');const j=new Date(d.getFullYear(),0,1);return d.getFullYear()+'-W'+Math.ceil(((d-j)/86400000+j.getDay()+1)/7);}
-function daysBetween(a,b){return Math.round((new Date(b+'T12:00:00')-new Date(a+'T12:00:00'))/86400000);}
-function isGraded(item){return !item.tipo||item.tipo==='graded';}
+function todayStr() { return new Date().toISOString().slice(0,10); }
+function fmtDate(d) {
+  if (!d) return '—';
+  return new Date(d + 'T12:00:00').toLocaleDateString('pt-BR', {day:'2-digit', month:'2-digit', year:'numeric'});
+}
+function weekKey(ds) {
+  var d = new Date(ds + 'T12:00:00');
+  var j = new Date(d.getFullYear(), 0, 1);
+  return d.getFullYear() + '-W' + Math.ceil(((d - j) / 86400000 + j.getDay() + 1) / 7);
+}
+function daysBetween(a, b) {
+  return Math.round((new Date(b + 'T12:00:00') - new Date(a + 'T12:00:00')) / 86400000);
+}
+function isGraded(item) { return !item.tipo || item.tipo === 'graded'; }
 
-function calcPct(item,days,recs){
-  const count=days.filter(d=>recs[d]&&recs[d][item.id]).length;
-  let denom;
-  if(item.freq==='diário')denom=days.length;
-  else if(item.freq==='semanal')denom=new Set(days.map(weekKey)).size;
-  else if(item.freq==='mensal')denom=new Set(days.map(d=>d.slice(0,7))).size;
-  else denom=new Set(days.map(d=>d.slice(0,4))).size;
-  denom=Math.max(1,denom);
-  return{count,denom,pct:Math.round((count/denom)*100)};
+function calcPct(item, days, recs) {
+  var count = days.filter(function(d) { return recs[d] && recs[d][item.id]; }).length;
+  var denom;
+  if (item.freq === 'diario') denom = days.length;
+  else if (item.freq === 'semanal') denom = new Set(days.map(weekKey)).size;
+  else if (item.freq === 'mensal') denom = new Set(days.map(function(d) { return d.slice(0,7); })).size;
+  else denom = new Set(days.map(function(d) { return d.slice(0,4); })).size;
+  denom = Math.max(1, denom);
+  return {count: count, denom: denom, pct: Math.round((count / denom) * 100)};
 }
 
-function gradeNota(pct){
-  if(pct>=90)return'I';if(pct>=70)return'B';if(pct>=50)return'R';if(pct>=1)return'F';return'N';
+function gradeNota(pct) {
+  if (pct >= 90) return 'I';
+  if (pct >= 70) return 'B';
+  if (pct >= 50) return 'R';
+  if (pct >= 1)  return 'F';
+  return 'N';
 }
-function notaDesc(n){return{I:'Intenso',B:'Bom',R:'Regular',F:'Fraco',N:'Nenhum',S:'Sim',NAO:'Não'}[n]||n;}
-function freqLabel(f){return{diário:'dias',semanal:'semanas',mensal:'meses',anual:'anos'}[f];}
+function notaDesc(n) {
+  var m = {I:'Intenso', B:'Bom', R:'Regular', F:'Fraco', N:'Nenhum', S:'Sim', NAO:'Nao'};
+  return m[n] || n;
+}
+function freqLabel(f) {
+  var m = {diario:'dias', semanal:'semanas', mensal:'meses', anual:'anos'};
+  return m[f] || f;
+}
 
-let userName  =LS.get('userName',null);
-let cycleStart=LS.get('cycleStart',todayStr());
-let records   =LS.get('records',{});
-let cycles    =LS.get('cycles',[]);
-let checked   =LS.get('day_'+todayStr(),{});
-let _pendingNewDate='';
-let _pendingNotas={};
-let _deleteIdx=-1;
+var userName   = lsGet('userName', null);
+var cycleStart = lsGet('cycleStart', todayStr());
+var records    = lsGet('records', {});
+var cycles     = lsGet('cycles', []);
+var checked    = lsGet('day_' + todayStr(), {});
+var _pendingNewDate = '';
+var _pendingNotas = {};
+var _deleteIdx = -1;
 
-function renderList(items,cid){
-  const el=document.getElementById(cid);el.innerHTML='';
-  items.forEach(item=>{
-    const on=!!checked[item.id];
-    const div=document.createElement('div');
-    div.className='check-item'+(on?' checked':'');
-    div.innerHTML=`<div class="check-circle"><div class="checkmark"></div></div><span class="item-label">${item.label}</span><span class="item-freq">${item.freq}</span>`;
-    div.onclick=()=>{checked[item.id]=!checked[item.id];div.classList.toggle('checked',!!checked[item.id]);LS.set('day_'+todayStr(),checked);};
+// ---- Checklist ----
+function renderList(items, cid) {
+  var el = document.getElementById(cid);
+  el.innerHTML = '';
+  items.forEach(function(item) {
+    var on = !!checked[item.id];
+    var div = document.createElement('div');
+    div.className = 'check-item' + (on ? ' checked' : '');
+    div.innerHTML = '<div class="check-circle"><div class="checkmark"></div></div>' +
+      '<span class="item-label">' + item.label + '</span>' +
+      '<span class="item-freq">' + item.freq + '</span>';
+    div.onclick = (function(id, el) {
+      return function() {
+        checked[id] = !checked[id];
+        el.classList.toggle('checked', !!checked[id]);
+        lsSet('day_' + todayStr(), checked);
+      };
+    })(item.id, div);
     el.appendChild(div);
   });
 }
 
-function saveToday(){
-  records[todayStr()]={...checked};LS.set('records',records);
-  const m=document.getElementById('saved-msg');m.textContent='Salvo com sucesso!';
-  setTimeout(()=>m.textContent='',2500);
+function saveToday() {
+  records[todayStr()] = JSON.parse(JSON.stringify(checked));
+  lsSet('records', records);
+  var m = document.getElementById('saved-msg');
+  m.textContent = 'Salvo com sucesso!';
+  setTimeout(function() { m.textContent = ''; }, 2500);
 }
 
-function badgeInfo(item,days,recs,overrideNota){
-  const s=calcPct(item,days,recs);
-  let nota;
-  if(overrideNota)nota=overrideNota;
-  else if(isGraded(item))nota=gradeNota(s.pct);
-  else nota=s.count>0?'S':'NAO';
-  const nd=notaDesc(nota);
-  const cls='nota-'+nota;
-  return{nota,nd,cls,pct:s.pct,count:s.count,denom:s.denom,badge:`<span class="nota-badge ${cls}">${nota==='NAO'?'N':nota} — ${nd}</span>`};
+// ---- Tema ----
+function renderTema() {
+  document.getElementById('tema-titulo').textContent = TEMA_TITULO;
+  document.getElementById('tema-mes').textContent = TEMA_MES;
+  var saved = lsGet('tema_resp_' + TEMA_MES, {});
+  var cont = document.getElementById('tema-perguntas');
+  cont.innerHTML = '';
+  TEMA_PERGUNTAS.forEach(function(q, i) {
+    var div = document.createElement('div');
+    div.className = 'tema-q-block';
+    var ta = document.createElement('textarea');
+    ta.className = 'tema-q-resp';
+    ta.id = 'tema-resp-' + i;
+    ta.placeholder = 'Digite sua resposta...';
+    ta.value = saved[i] || '';
+    div.innerHTML = '<div class="tema-q-num">Pergunta ' + (i+1) + '</div>' +
+      '<div class="tema-q-text">' + q + '</div>';
+    div.appendChild(ta);
+    cont.appendChild(div);
+  });
 }
 
-function renderStats(){
-  const days=Object.keys(records).filter(d=>d>=cycleStart).sort();
-  document.getElementById('cycle-label').textContent=fmtDate(cycleStart);
-  function cardHTML(item){
-    const b=badgeInfo(item,days,records,null);
-    return`<div class="stat-card">
-      <div class="stat-row"><span class="stat-name">${item.label}</span>
-      <div class="stat-right">${b.badge}<span class="stat-pct">${b.pct}%</span></div></div>
-      <div class="bar-bg"><div class="bar-fill" style="width:${b.pct}%"></div></div>
-      <div class="stat-sub">${b.count} de ${b.denom} ${freqLabel(item.freq)} registrados</div>
-    </div>`;
+function saveTema() {
+  var respostas = {};
+  TEMA_PERGUNTAS.forEach(function(_, i) {
+    var el = document.getElementById('tema-resp-' + i);
+    respostas[i] = el ? el.value : '';
+  });
+  lsSet('tema_resp_' + TEMA_MES, respostas);
+  var m = document.getElementById('tema-saved-msg');
+  m.textContent = 'Respostas salvas!';
+  setTimeout(function() { m.textContent = ''; }, 2500);
+}
+
+function getTemaRespostas() {
+  return lsGet('tema_resp_' + TEMA_MES, {});
+}
+
+function buildTemaPDFHtml(titulo, mes, perguntas, respostas, nome) {
+  var css = '<style>body{font-family:Arial,sans-serif;padding:2rem;color:#1a1a18;max-width:700px;margin:0 auto;}' +
+    'h1{font-size:20px;margin-bottom:4px;}.sub{font-size:12px;color:#888;margin-bottom:2rem;}' +
+    '.qb{margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid #eee;}' +
+    '.qn{font-size:11px;color:#888;text-transform:uppercase;margin-bottom:4px;}' +
+    '.qt{font-size:14px;font-weight:bold;margin-bottom:8px;line-height:1.4;}' +
+    '.qr{font-size:13px;color:#333;line-height:1.6;white-space:pre-wrap;}</style>';
+  var body = '<h1>' + titulo + '</h1>' +
+    '<p class="sub">' + mes + (nome ? ' &middot; ' + nome : '') + '</p>';
+  perguntas.forEach(function(q, i) {
+    var r = (respostas[i] || '(sem resposta)').replace(/</g, '&lt;');
+    body += '<div class="qb"><div class="qn">Pergunta ' + (i+1) + '</div>' +
+      '<div class="qt">' + q + '</div>' +
+      '<div class="qr">' + r + '</div></div>';
+  });
+  return '<!DOCTYPE html><html><head><meta charset="UTF-8">' + css + '</head><body>' + body + '</body></html>';
+}
+
+function exportTemaPDF() {
+  var respostas = getTemaRespostas();
+  var html = buildTemaPDFHtml(TEMA_TITULO, TEMA_MES, TEMA_PERGUNTAS, respostas, userName);
+  var blob = new Blob([html], {type: 'text/html;charset=utf-8'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = (userName ? userName.replace(/\s+/g, '-') + '-' : '') + 'ENS-Tema.html';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(function() { URL.revokeObjectURL(a.href); }, 1000);
+}
+
+function exportTemaExcel() {
+  var respostas = getTemaRespostas();
+  var header = [['Usuario', 'Tema', 'Mes', 'Pergunta', 'Resposta']];
+  var rows = TEMA_PERGUNTAS.map(function(q, i) {
+    return [userName || '', TEMA_TITULO, TEMA_MES, q, respostas[i] || ''];
+  });
+  var wb = XLSX.utils.book_new();
+  var ws = XLSX.utils.aoa_to_sheet(header.concat(rows));
+  ws['!cols'] = [{wch:16},{wch:30},{wch:14},{wch:50},{wch:60}];
+  XLSX.utils.book_append_sheet(wb, ws, 'Tema de Estudos');
+  XLSX.writeFile(wb, (userName ? userName.replace(/\s+/g, '-') + '-' : '') + 'ENS-Tema.xlsx');
+}
+
+function exportTemaPNG() {
+  var el = document.getElementById('page-tema');
+  html2canvas(el, {backgroundColor: '#f5f4f0', scale: 2}).then(function(canvas) {
+    var a = document.createElement('a');
+    a.download = 'ENS-Tema.png';
+    a.href = canvas.toDataURL('image/png');
+    a.click();
+  });
+}
+
+// ---- Stats ----
+function badgeInfo(item, days, recs, overrideNota) {
+  var s = calcPct(item, days, recs);
+  var nota;
+  if (overrideNota) nota = overrideNota;
+  else if (isGraded(item)) nota = gradeNota(s.pct);
+  else nota = s.count > 0 ? 'S' : 'NAO';
+  var nd = notaDesc(nota);
+  var lbl = nota === 'NAO' ? 'N' : nota;
+  var badge = '<span class="nota-badge nota-' + nota + '">' + lbl + ' — ' + nd + '</span>';
+  return {nota: nota, nd: nd, pct: s.pct, count: s.count, denom: s.denom, badge: badge};
+}
+
+function renderStats() {
+  var days = Object.keys(records).filter(function(d) { return d >= cycleStart; }).sort();
+  document.getElementById('cycle-label').textContent = fmtDate(cycleStart);
+  function cardHTML(item) {
+    var b = badgeInfo(item, days, records, null);
+    return '<div class="stat-card">' +
+      '<div class="stat-row"><span class="stat-name">' + item.label + '</span>' +
+      '<div class="stat-right">' + b.badge + '<span class="stat-pct">' + b.pct + '%</span></div></div>' +
+      '<div class="bar-bg"><div class="bar-fill" style="width:' + b.pct + '%"></div></div>' +
+      '<div class="stat-sub">' + b.count + ' de ' + b.denom + ' ' + freqLabel(item.freq) + ' registrados</div>' +
+      '</div>';
   }
-  document.getElementById('stats-pce').innerHTML=PCE.map(cardHTML).join('');
-  document.getElementById('stats-ve').innerHTML=VE.map(cardHTML).join('');
+  document.getElementById('stats-pce').innerHTML = PCE.map(cardHTML).join('');
+  document.getElementById('stats-ve').innerHTML  = VE.map(cardHTML).join('');
 }
 
-/* ---- Filter by period ---- */
-function applyFilter(){
-  const fs=document.getElementById('filter-start').value;
-  const fe=document.getElementById('filter-end').value;
-  const errEl=document.getElementById('filter-error');
-  errEl.textContent='';
-
-  if(!fs||!fe){errEl.textContent='Por favor, preencha as duas datas.';return;}
-  if(fe<fs){errEl.textContent='A data final deve ser maior que a inicial.';return;}
-  const diff=daysBetween(fs,fe);
-  if(diff>45){errEl.textContent='O intervalo não pode ser superior a 45 dias.';return;}
-
-  // gather all records across cycles + current
-  const allRecs={...records};
-  cycles.forEach(c=>Object.assign(allRecs,c.records));
-
-  const days=Object.keys(allRecs).filter(d=>d>=fs&&d<=fe).sort();
-  if(!days.length){
-    document.getElementById('filtered-result').innerHTML=`<div class="filtered-block"><div class="hist-title">Período: ${fmtDate(fs)} a ${fmtDate(fe)}</div><div class="hist-sub" style="margin-top:6px;">Nenhum registro encontrado neste período.</div></div>`;
+// ---- Filter ----
+function applyFilter() {
+  var fs = document.getElementById('filter-start').value;
+  var fe = document.getElementById('filter-end').value;
+  var errEl = document.getElementById('filter-error');
+  errEl.textContent = '';
+  if (!fs || !fe) { errEl.textContent = 'Por favor, preencha as duas datas.'; return; }
+  if (fe < fs)    { errEl.textContent = 'A data final deve ser maior que a inicial.'; return; }
+  if (daysBetween(fs, fe) > 45) { errEl.textContent = 'O intervalo nao pode ser superior a 45 dias.'; return; }
+  var allRecs = JSON.parse(JSON.stringify(records));
+  cycles.forEach(function(c) { Object.assign(allRecs, c.records); });
+  var days = Object.keys(allRecs).filter(function(d) { return d >= fs && d <= fe; }).sort();
+  if (!days.length) {
+    document.getElementById('filtered-result').innerHTML =
+      '<div class="filtered-block"><div class="hist-title">Periodo: ' + fmtDate(fs) + ' a ' + fmtDate(fe) + '</div>' +
+      '<div class="hist-sub" style="margin-top:6px;">Nenhum registro encontrado neste periodo.</div></div>';
     return;
   }
-
-  const rows=buildRowsWithNotas(days,allRecs,null);
-  const tableHTML=makeTableHTML(rows);
-  const blockId='filtered-block-export';
-
-  document.getElementById('filtered-result').innerHTML=`
-    <div class="filtered-block" id="${blockId}">
-      <div class="hist-header">
-        <div>
-          <div class="hist-title">Período: ${fmtDate(fs)} a ${fmtDate(fe)}</div>
-          <div class="hist-sub">${days.length} dias com registro${userName?' &middot; '+userName:''}</div>
-        </div>
-        <div class="hist-actions">
-          <button class="exp-btn" onclick="exportFilterPDF('${fs}','${fe}')">PDF</button>
-          <button class="exp-btn" onclick="exportFilterExcel('${fs}','${fe}')">Excel</button>
-          <button class="exp-btn" onclick="exportPNG('${blockId}','periodo')">PNG</button>
-        </div>
-      </div>
-      ${tableHTML}
-    </div>`;
+  var rows = buildRowsWithNotas(days, allRecs, null);
+  var blockId = 'filtered-block-export';
+  document.getElementById('filtered-result').innerHTML =
+    '<div class="filtered-block" id="' + blockId + '">' +
+    '<div class="hist-header"><div>' +
+    '<div class="hist-title">Periodo: ' + fmtDate(fs) + ' a ' + fmtDate(fe) + '</div>' +
+    '<div class="hist-sub">' + days.length + ' dias com registro' + (userName ? ' &middot; ' + userName : '') + '</div></div>' +
+    '<div class="hist-actions">' +
+    '<button class="exp-btn" onclick="exportFilterPDF(\'' + fs + '\',\'' + fe + '\')">PDF</button>' +
+    '<button class="exp-btn" onclick="exportFilterExcel(\'' + fs + '\',\'' + fe + '\')">Excel</button>' +
+    '<button class="exp-btn" onclick="exportPNG(\'' + blockId + '\',\'periodo\')">PNG</button>' +
+    '</div></div>' + makeTableHTML(rows) + '</div>';
 }
 
-/* ---- Cycle closing flow ---- */
-function startCloseCycle(){
-  document.getElementById('inp-newdate').value=todayStr();
-  document.getElementById('modal-newdate').style.display='flex';
+// ---- Cycle closing ----
+function startCloseCycle() {
+  document.getElementById('inp-newdate').value = todayStr();
+  document.getElementById('modal-newdate').style.display = 'flex';
 }
 
-function goToReview(){
-  const nd=document.getElementById('inp-newdate').value;
-  if(!nd){alert('Por favor, escolha uma data.');return;}
-  _pendingNewDate=nd;
+function goToReview() {
+  var nd = document.getElementById('inp-newdate').value;
+  if (!nd) { alert('Por favor, escolha uma data.'); return; }
+  _pendingNewDate = nd;
   closeModal('modal-newdate');
-  const days=Object.keys(records).filter(d=>d>=cycleStart).sort();
-  _pendingNotas={};
-  [...PCE,...VE].forEach(item=>{
-    _pendingNotas[item.id]=badgeInfo(item,days,records,null).nota;
+  var days = Object.keys(records).filter(function(d) { return d >= cycleStart; }).sort();
+  _pendingNotas = {};
+  PCE.concat(VE).forEach(function(item) {
+    _pendingNotas[item.id] = badgeInfo(item, days, records, null).nota;
   });
-  const container=document.getElementById('review-body');
-  container.innerHTML='';
-  function makeGroup(items,titulo){
-    const sec=document.createElement('div');
-    sec.innerHTML=`<div style="font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;margin:12px 0 6px;">${titulo}</div>`;
-    items.forEach(item=>{
-      const b=badgeInfo(item,days,records,null);
-      const options=isGraded(item)?['I','B','R','F','N']:['S','NAO'];
-      const btnHtml=options.map(opt=>{
-        const lbl=opt==='NAO'?'N':opt;
-        const sel=_pendingNotas[item.id]===opt?'selected':'';
-        return`<button class="nota-btn nb-${opt} ${sel}" onclick="selectNota('${item.id}','${opt}',this.parentNode)">${lbl} — ${notaDesc(opt)}</button>`;
+  var container = document.getElementById('review-body');
+  container.innerHTML = '';
+  function makeGroup(items, titulo) {
+    var sec = document.createElement('div');
+    var lbl = document.createElement('div');
+    lbl.style.cssText = 'font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;margin:12px 0 6px;';
+    lbl.textContent = titulo;
+    sec.appendChild(lbl);
+    items.forEach(function(item) {
+      var b = badgeInfo(item, days, records, null);
+      var options = isGraded(item) ? ['I','B','R','F','N'] : ['S','NAO'];
+      var btns = options.map(function(opt) {
+        var lbl2 = opt === 'NAO' ? 'N' : opt;
+        var sel = _pendingNotas[item.id] === opt ? ' selected' : '';
+        return '<button class="nota-btn nb-' + opt + sel + '" onclick="selectNota(\'' + item.id + '\',\'' + opt + '\',this.parentNode)">' + lbl2 + ' — ' + notaDesc(opt) + '</button>';
       }).join('');
-      const div=document.createElement('div');
-      div.className='review-item';
-      div.innerHTML=`<div class="review-item-name">${item.label}</div>
-        <div class="review-item-pct">Estatística: ${b.pct}% (${b.count}/${b.denom} ${freqLabel(item.freq)})</div>
-        <div class="nota-btns">${btnHtml}</div>`;
+      var div = document.createElement('div');
+      div.className = 'review-item';
+      div.innerHTML = '<div class="review-item-name">' + item.label + '</div>' +
+        '<div class="review-item-pct">Estatistica: ' + b.pct + '% (' + b.count + '/' + b.denom + ' ' + freqLabel(item.freq) + ')</div>' +
+        '<div class="nota-btns">' + btns + '</div>';
       sec.appendChild(div);
     });
     container.appendChild(sec);
   }
-  makeGroup(PCE,'Pontos concretos de esforço');
-  makeGroup(VE,'Vida em equipe');
-  document.getElementById('modal-review').style.display='flex';
+  makeGroup(PCE, 'Pontos concretos de esforco');
+  makeGroup(VE, 'Vida em equipe');
+  document.getElementById('modal-review').style.display = 'flex';
 }
 
-function selectNota(itemId,nota,btnContainer){
-  _pendingNotas[itemId]=nota;
-  btnContainer.querySelectorAll('.nota-btn').forEach(b=>b.classList.remove('selected'));
-  btnContainer.querySelector('.nb-'+nota).classList.add('selected');
+function selectNota(itemId, nota, btnContainer) {
+  _pendingNotas[itemId] = nota;
+  btnContainer.querySelectorAll('.nota-btn').forEach(function(b) { b.classList.remove('selected'); });
+  btnContainer.querySelector('.nb-' + nota).classList.add('selected');
 }
 
-function confirmCycle(){
-  const days=Object.keys(records).filter(d=>d>=cycleStart).sort();
-  const rows=buildRowsWithNotas(days,records,_pendingNotas);
-  cycles.push({start:cycleStart,end:days.length?days[days.length-1]:cycleStart,records:Object.fromEntries(days.map(d=>[d,records[d]])),notas:_pendingNotas,rows});
-  LS.set('cycles',cycles);
-  cycleStart=_pendingNewDate;LS.set('cycleStart',cycleStart);
-  records={};LS.set('records',records);
+function confirmCycle() {
+  var days = Object.keys(records).filter(function(d) { return d >= cycleStart; }).sort();
+  var rows = buildRowsWithNotas(days, records, _pendingNotas);
+  var temaSnap = {
+    titulo: TEMA_TITULO, mes: TEMA_MES,
+    perguntas: TEMA_PERGUNTAS.slice(),
+    respostas: getTemaRespostas()
+  };
+  cycles.push({
+    start: cycleStart,
+    end: days.length ? days[days.length - 1] : cycleStart,
+    records: (function() { var o = {}; days.forEach(function(d) { o[d] = records[d]; }); return o; })(),
+    notas: _pendingNotas,
+    rows: rows,
+    tema: temaSnap
+  });
+  lsSet('cycles', cycles);
+  cycleStart = _pendingNewDate;
+  lsSet('cycleStart', cycleStart);
+  records = {};
+  lsSet('records', records);
   closeModal('modal-review');
-  renderStats();renderHistory();goTo('history');
+  renderStats();
+  renderHistory();
+  goTo('history');
 }
 
-/* ---- Delete cycle ---- */
-function askDelete(idx){
-  _deleteIdx=idx;
-  const c=cycles[idx];
-  document.getElementById('delete-msg').textContent=`Apagar o Ciclo ${idx+1} (${fmtDate(c.start)} a ${fmtDate(c.end)})? Esta ação não pode ser desfeita.`;
-  document.getElementById('modal-delete').style.display='flex';
+// ---- Delete ----
+function askDelete(idx) {
+  _deleteIdx = idx;
+  var c = cycles[idx];
+  document.getElementById('delete-msg').textContent =
+    'Apagar o Ciclo ' + (idx+1) + ' (' + fmtDate(c.start) + ' a ' + fmtDate(c.end) + ')? Esta acao nao pode ser desfeita.';
+  document.getElementById('modal-delete').style.display = 'flex';
 }
-
-function confirmDelete(){
-  if(_deleteIdx<0)return;
-  cycles.splice(_deleteIdx,1);
-  LS.set('cycles',cycles);
-  _deleteIdx=-1;
+function confirmDelete() {
+  if (_deleteIdx < 0) return;
+  cycles.splice(_deleteIdx, 1);
+  lsSet('cycles', cycles);
+  _deleteIdx = -1;
   closeModal('modal-delete');
   renderHistory();
 }
 
-/* ---- Build rows ---- */
-function buildRowsWithNotas(days,recs,notas){
-  return[...PCE,...VE].map(item=>{
-    const s=calcPct(item,days,recs);
-    const nota=notas&&notas[item.id]?notas[item.id]:(isGraded(item)?gradeNota(s.pct):s.count>0?'S':'NAO');
-    return{grupo:PCE.find(p=>p.id===item.id)?'PCE':'VE',label:item.label,pct:s.pct+'%',nota,notaDesc:notaDesc(nota)};
+// ---- Build rows ----
+function buildRowsWithNotas(days, recs, notas) {
+  return PCE.concat(VE).map(function(item) {
+    var s = calcPct(item, days, recs);
+    var nota = (notas && notas[item.id]) ? notas[item.id] : (isGraded(item) ? gradeNota(s.pct) : (s.count > 0 ? 'S' : 'NAO'));
+    var grupo = PCE.find(function(p) { return p.id === item.id; }) ? 'PCE' : 'VE';
+    return {grupo: grupo, label: item.label, pct: s.pct + '%', nota: nota, notaDesc: notaDesc(nota)};
   });
 }
 
-function makeTableHTML(rows){
-  return`<table class="hist-table"><thead><tr><th>Item</th><th>%</th><th>Avaliação</th></tr></thead><tbody>
-    ${rows.map(r=>{
-      const cls=r.nota==='NAO'?'nota-NAO':'nota-'+r.nota;
-      const lbl=r.nota==='NAO'?'N':r.nota;
-      return`<tr><td>${r.label}</td><td>${r.pct}</td><td><span class="nota-badge ${cls}">${lbl} — ${r.notaDesc}</span></td></tr>`;
-    }).join('')}
-  </tbody></table>`;
+function makeTableHTML(rows) {
+  var tbody = rows.map(function(r) {
+    var cls = 'nota-' + r.nota;
+    var lbl = r.nota === 'NAO' ? 'N' : r.nota;
+    return '<tr><td>' + r.label + '</td><td>' + r.pct + '</td><td>' +
+      '<span class="nota-badge ' + cls + '">' + lbl + ' — ' + r.notaDesc + '</span></td></tr>';
+  }).join('');
+  return '<table class="hist-table"><thead><tr><th>Item</th><th>%</th><th>Avaliacao</th></tr></thead><tbody>' + tbody + '</tbody></table>';
 }
 
-/* ---- Render history ---- */
-function renderHistory(){
-  const el=document.getElementById('hist-list');
-  if(!cycles.length){el.innerHTML='<div class="empty">Nenhum ciclo encerrado ainda.</div>';return;}
-  el.innerHTML=cycles.slice().reverse().map((c,i)=>{
-    const n=cycles.length-i;
-    const idx=cycles.length-1-i;
-    const days=Object.keys(c.records);
-    const rows=c.rows||buildRowsWithNotas(days,c.records,c.notas||null);
-    return`<div class="hist-block" id="hb-${idx}">
-      <div class="hist-header">
-        <div>
-          <div class="hist-title">Ciclo ${n}${userName?' — '+userName:''}</div>
-          <div class="hist-sub">${fmtDate(c.start)} a ${fmtDate(c.end)} &middot; ${days.length} dias</div>
-        </div>
-        <div class="hist-actions">
-          <button class="exp-btn" onclick="exportPDF()">PDF</button>
-          <button class="exp-btn" onclick="exportExcel()">Excel</button>
-          <button class="exp-btn" onclick="exportPNG('hb-${idx}','ciclo-${n}')">PNG</button>
-          <button class="del-btn" onclick="askDelete(${idx})">Apagar</button>
-        </div>
-      </div>
-      ${makeTableHTML(rows)}
-    </div>`;
+function temaBlockHTML(tema) {
+  if (!tema) return '';
+  var respostas = tema.respostas || {};
+  var html = '<div style="margin-top:12px;padding-top:12px;border-top:0.5px solid rgba(0,0,0,0.1);">' +
+    '<div style="font-size:10px;font-weight:700;color:#9b9b95;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:4px;">Tema — ' + tema.mes + '</div>';
+  (tema.perguntas || []).forEach(function(q, i) {
+    html += '<div style="margin-bottom:10px;">' +
+      '<div style="font-size:11px;color:#9b9b95;margin-bottom:3px;">Pergunta ' + (i+1) + '</div>' +
+      '<div style="font-size:13px;font-weight:700;margin-bottom:4px;line-height:1.35;">' + q + '</div>' +
+      '<div style="font-size:12px;color:#6b6b66;line-height:1.5;white-space:pre-wrap;">' + (respostas[i] || '(sem resposta)') + '</div>' +
+      '</div>';
+  });
+  html += '</div>';
+  return html;
+}
+
+// ---- History ----
+function renderHistory() {
+  var el = document.getElementById('hist-list');
+  if (!cycles.length) { el.innerHTML = '<div class="empty">Nenhum ciclo encerrado ainda.</div>'; return; }
+  el.innerHTML = cycles.slice().reverse().map(function(c, i) {
+    var n = cycles.length - i;
+    var idx = cycles.length - 1 - i;
+    var days = Object.keys(c.records);
+    var rows = c.rows || buildRowsWithNotas(days, c.records, c.notas || null);
+    return '<div class="hist-block" id="hb-' + idx + '">' +
+      '<div class="hist-header"><div>' +
+      '<div class="hist-title">Ciclo ' + n + (userName ? ' — ' + userName : '') + '</div>' +
+      '<div class="hist-sub">' + fmtDate(c.start) + ' a ' + fmtDate(c.end) + ' &middot; ' + days.length + ' dias</div>' +
+      '</div><div class="hist-actions">' +
+      '<button class="exp-btn" onclick="exportPDF()">PDF</button>' +
+      '<button class="exp-btn" onclick="exportExcel()">Excel</button>' +
+      '<button class="exp-btn" onclick="exportPNG(\'hb-' + idx + '\',\'ciclo-' + n + '\')">PNG</button>' +
+      '<button class="del-btn" onclick="askDelete(' + idx + ')">Apagar</button>' +
+      '</div></div>' +
+      makeTableHTML(rows) +
+      temaBlockHTML(c.tema) +
+      '</div>';
   }).join('');
 }
 
-/* ---- Exports ---- */
-function exportExcel(){
-  const header=[['Usuário','Ciclo','Período','Grupo','Item','%','Nota','Descrição']];
-  const allRows=[];
-  cycles.forEach((c,ci)=>{
-    const rows=c.rows||buildRowsWithNotas(Object.keys(c.records).sort(),c.records,c.notas||null);
-    const per=fmtDate(c.start)+' a '+fmtDate(c.end);
-    rows.forEach(r=>allRows.push([userName||'',ci+1,per,r.grupo,r.label,r.pct,r.nota==='NAO'?'N':r.nota,r.notaDesc]));
-  });
-  const wb=XLSX.utils.book_new();
-  const ws=XLSX.utils.aoa_to_sheet([...header,...allRows]);
-  ws['!cols']=[{wch:16},{wch:8},{wch:26},{wch:6},{wch:32},{wch:8},{wch:8},{wch:12}];
-  XLSX.utils.book_append_sheet(wb,ws,'Todos os ciclos');
-  XLSX.writeFile(wb,(userName?userName.replace(/\s+/g,'-')+'-':'')+'ENS-PCEs-historico.xlsx');
-}
-
-function exportFilterExcel(fs,fe){
-  const allRecs={...records};
-  cycles.forEach(c=>Object.assign(allRecs,c.records));
-  const days=Object.keys(allRecs).filter(d=>d>=fs&&d<=fe).sort();
-  const rows=buildRowsWithNotas(days,allRecs,null);
-  const header=[['Usuário','Período','Grupo','Item','%','Nota','Descrição']];
-  const per=fmtDate(fs)+' a '+fmtDate(fe);
-  const dataRows=rows.map(r=>[userName||'',per,r.grupo,r.label,r.pct,r.nota==='NAO'?'N':r.nota,r.notaDesc]);
-  const wb=XLSX.utils.book_new();
-  const ws=XLSX.utils.aoa_to_sheet([...header,...dataRows]);
-  ws['!cols']=[{wch:16},{wch:26},{wch:6},{wch:32},{wch:8},{wch:8},{wch:12}];
-  XLSX.utils.book_append_sheet(wb,ws,'Período');
-  XLSX.writeFile(wb,(userName?userName.replace(/\s+/g,'-')+'-':'')+'ENS-PCEs-periodo.xlsx');
-}
-
-function exportPNG(blockId,suffix){
-  const el=document.getElementById(blockId);
-  html2canvas(el,{backgroundColor:'#ffffff',scale:2}).then(canvas=>{
-    const a=document.createElement('a');
-    a.download='ENS-PCEs-'+suffix+'.png';
-    a.href=canvas.toDataURL('image/png');a.click();
-  });
-}
-
-function exportPDF(){
-  let html=`<html><head><meta charset="UTF-8"><style>
-    body{font-family:Arial,sans-serif;padding:2rem;color:#1a1a18;max-width:700px;margin:0 auto;}
-    h1{font-size:20px;margin-bottom:4px;}.sub{font-size:12px;color:#888;margin-bottom:1.5rem;}
-    h2{font-size:15px;margin:1.5rem 0 6px;border-bottom:1px solid #ddd;padding-bottom:4px;}
-    table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:1rem;}
-    th{text-align:left;font-size:11px;color:#888;text-transform:uppercase;padding:4px 8px;border-bottom:1px solid #ddd;}
-    td{padding:6px 8px;border-bottom:1px solid #f0f0f0;}
-    .badge{display:inline-block;padding:2px 7px;border-radius:4px;font-weight:700;font-size:11px;}
-    .I{background:#1a4d2e;color:#fff}.B{background:#2d7a4f;color:#fff}
-    .R{background:#e07b00;color:#fff}.F{background:#c0392b;color:#fff}
-    .N{background:#9b9b95;color:#fff}.S{background:#2d7a4f;color:#fff}
-    .NAO{background:#c0392b;color:#fff}
-  </style></head><body>
-  <h1>ENS - PCEs</h1><p class="sub">Histórico completo — todos os ciclos${userName?' &middot; '+userName:''}</p>`;
-  cycles.forEach((c,ci)=>{
-    const rows=c.rows||buildRowsWithNotas(Object.keys(c.records).sort(),c.records,c.notas||null);
-    html+=`<h2>Ciclo ${ci+1} — ${fmtDate(c.start)} a ${fmtDate(c.end)}</h2>
-    <table><thead><tr><th>Item</th><th>%</th><th>Avaliação</th></tr></thead><tbody>`;
-    rows.forEach(r=>{
-      const cls=r.nota==='NAO'?'NAO':r.nota;
-      const lbl=r.nota==='NAO'?'N':r.nota;
-      html+=`<tr><td>${r.label}</td><td>${r.pct}</td><td><span class="badge ${cls}">${lbl} — ${r.notaDesc}</span></td></tr>`;
+// ---- Exports ----
+function exportPDF() {
+  var css = '<style>body{font-family:Arial,sans-serif;padding:2rem;color:#1a1a18;max-width:700px;margin:0 auto;}' +
+    'h1{font-size:20px;margin-bottom:4px;}.sub{font-size:12px;color:#888;margin-bottom:1.5rem;}' +
+    'h2{font-size:15px;margin:1.5rem 0 6px;border-bottom:1px solid #ddd;padding-bottom:4px;}' +
+    'table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:1rem;}' +
+    'th{text-align:left;font-size:11px;color:#888;text-transform:uppercase;padding:4px 8px;border-bottom:1px solid #ddd;}' +
+    'td{padding:6px 8px;border-bottom:1px solid #f0f0f0;}' +
+    '.badge{display:inline-block;padding:2px 7px;border-radius:4px;font-weight:700;font-size:11px;}' +
+    '.I{background:#1a4d2e;color:#fff}.B{background:#2d7a4f;color:#fff}' +
+    '.R{background:#e07b00;color:#fff}.F{background:#c0392b;color:#fff}' +
+    '.N{background:#9b9b95;color:#fff}.S{background:#2d7a4f;color:#fff}.NAO{background:#c0392b;color:#fff}' +
+    '.qb{margin:1rem 0;padding-bottom:1rem;border-bottom:1px solid #eee;}' +
+    '.qn{font-size:11px;color:#888;margin-bottom:3px;}.qt{font-size:13px;font-weight:bold;margin-bottom:5px;}' +
+    '.qr{font-size:12px;color:#444;line-height:1.6;white-space:pre-wrap;}</style>';
+  var body = '<h1>ENS - PCEs</h1><p class="sub">Historico completo' + (userName ? ' &middot; ' + userName : '') + '</p>';
+  cycles.forEach(function(c, ci) {
+    var rows = c.rows || buildRowsWithNotas(Object.keys(c.records).sort(), c.records, c.notas || null);
+    body += '<h2>Ciclo ' + (ci+1) + ' — ' + fmtDate(c.start) + ' a ' + fmtDate(c.end) + '</h2>';
+    body += '<table><thead><tr><th>Item</th><th>%</th><th>Avaliacao</th></tr></thead><tbody>';
+    rows.forEach(function(r) {
+      var cls = r.nota === 'NAO' ? 'NAO' : r.nota;
+      var lbl = r.nota === 'NAO' ? 'N' : r.nota;
+      body += '<tr><td>' + r.label + '</td><td>' + r.pct + '</td><td><span class="badge ' + cls + '">' + lbl + ' — ' + r.notaDesc + '</span></td></tr>';
     });
-    html+=`</tbody></table>`;
+    body += '</tbody></table>';
+    if (c.tema) {
+      body += '<h2 style="color:#1a4f8a;">Tema — ' + c.tema.mes + '</h2>';
+      (c.tema.perguntas || []).forEach(function(q, i) {
+        var r = ((c.tema.respostas || {})[i] || '(sem resposta)').replace(/</g, '&lt;');
+        body += '<div class="qb"><div class="qn">Pergunta ' + (i+1) + '</div><div class="qt">' + q + '</div><div class="qr">' + r + '</div></div>';
+      });
+    }
   });
-  html+=`</body></html>`;
-  const w=window.open('','_blank');w.document.write(html);w.document.close();
-  setTimeout(()=>w.print(),600);
+  var html = '<!DOCTYPE html><html><head><meta charset="UTF-8">' + css + '</head><body>' + body + '</body></html>';
+  var w = window.open('', '_blank');
+  w.document.write(html);
+  w.document.close();
+  setTimeout(function() { w.print(); }, 600);
 }
 
-function exportFilterPDF(fs,fe){
-  const allRecs={...records};
-  cycles.forEach(c=>Object.assign(allRecs,c.records));
-  const days=Object.keys(allRecs).filter(d=>d>=fs&&d<=fe).sort();
-  const rows=buildRowsWithNotas(days,allRecs,null);
-  let html=`<html><head><meta charset="UTF-8"><style>
-    body{font-family:Arial,sans-serif;padding:2rem;color:#1a1a18;max-width:700px;margin:0 auto;}
-    h1{font-size:20px;margin-bottom:4px;}.sub{font-size:12px;color:#888;margin-bottom:1.5rem;}
-    table{width:100%;border-collapse:collapse;font-size:13px;}
-    th{text-align:left;font-size:11px;color:#888;text-transform:uppercase;padding:4px 8px;border-bottom:1px solid #ddd;}
-    td{padding:6px 8px;border-bottom:1px solid #f0f0f0;}
-    .badge{display:inline-block;padding:2px 7px;border-radius:4px;font-weight:700;font-size:11px;}
-    .I{background:#1a4d2e;color:#fff}.B{background:#2d7a4f;color:#fff}
-    .R{background:#e07b00;color:#fff}.F{background:#c0392b;color:#fff}
-    .N{background:#9b9b95;color:#fff}.S{background:#2d7a4f;color:#fff}
-    .NAO{background:#c0392b;color:#fff}
-  </style></head><body>
-  <h1>ENS - PCEs</h1>
-  <p class="sub">Período: ${fmtDate(fs)} a ${fmtDate(fe)}${userName?' &middot; '+userName:''} &middot; ${days.length} dias com registro</p>
-  <table><thead><tr><th>Item</th><th>%</th><th>Avaliação</th></tr></thead><tbody>`;
-  rows.forEach(r=>{
-    const cls=r.nota==='NAO'?'NAO':r.nota;
-    const lbl=r.nota==='NAO'?'N':r.nota;
-    html+=`<tr><td>${r.label}</td><td>${r.pct}</td><td><span class="badge ${cls}">${lbl} — ${r.notaDesc}</span></td></tr>`;
+function exportExcel() {
+  var wb = XLSX.utils.book_new();
+  var h1 = [['Usuario','Ciclo','Periodo','Grupo','Item','%','Nota','Descricao']];
+  var r1 = [];
+  cycles.forEach(function(c, ci) {
+    var rows = c.rows || buildRowsWithNotas(Object.keys(c.records).sort(), c.records, c.notas || null);
+    var per = fmtDate(c.start) + ' a ' + fmtDate(c.end);
+    rows.forEach(function(r) {
+      r1.push([userName||'', ci+1, per, r.grupo, r.label, r.pct, r.nota==='NAO'?'N':r.nota, r.notaDesc]);
+    });
   });
-  html+=`</tbody></table></body></html>`;
-  const w=window.open('','_blank');w.document.write(html);w.document.close();
-  setTimeout(()=>w.print(),600);
-}
-
-function closeModal(id){document.getElementById(id).style.display='none';}
-
-function saveName(){
-  const v=document.getElementById('inp-name').value.trim();if(!v)return;
-  userName=v;LS.set('userName',userName);
-  document.getElementById('modal-name').style.display='none';
-  document.getElementById('greeting').textContent='Olá, '+userName+'!';
-}
-
-function goTo(page){
-  ['checklist','stats','history'].forEach((p,i)=>{
-    document.getElementById('page-'+p).classList.toggle('active',p===page);
-    document.querySelectorAll('.tab')[i].classList.toggle('active',p===page);
+  var ws1 = XLSX.utils.aoa_to_sheet(h1.concat(r1));
+  ws1['!cols'] = [{wch:16},{wch:8},{wch:26},{wch:6},{wch:32},{wch:8},{wch:8},{wch:12}];
+  XLSX.utils.book_append_sheet(wb, ws1, 'Notas');
+  var h2 = [['Usuario','Ciclo','Tema','Mes','Pergunta','Resposta']];
+  var r2 = [];
+  cycles.forEach(function(c, ci) {
+    if (!c.tema) return;
+    (c.tema.perguntas || []).forEach(function(q, i) {
+      r2.push([userName||'', ci+1, c.tema.titulo, c.tema.mes, q, (c.tema.respostas||{})[i]||'']);
+    });
   });
-  if(page==='stats')renderStats();
-  if(page==='history')renderHistory();
+  if (r2.length) {
+    var ws2 = XLSX.utils.aoa_to_sheet(h2.concat(r2));
+    ws2['!cols'] = [{wch:16},{wch:8},{wch:30},{wch:14},{wch:50},{wch:60}];
+    XLSX.utils.book_append_sheet(wb, ws2, 'Tema de Estudos');
+  }
+  XLSX.writeFile(wb, (userName ? userName.replace(/\s+/g,'-') + '-' : '') + 'ENS-PCEs-historico.xlsx');
 }
 
-document.getElementById('today-label').textContent=new Date().toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long',year:'numeric'});
-if(userName){document.getElementById('greeting').textContent='Olá, '+userName+'!';document.getElementById('modal-name').style.display='none';}
-else{document.getElementById('modal-name').style.display='flex';}
-renderList(PCE,'list-pce');
-renderList(VE,'list-ve');
+function exportFilterPDF(fs, fe) {
+  var allRecs = JSON.parse(JSON.stringify(records));
+  cycles.forEach(function(c) { Object.assign(allRecs, c.records); });
+  var days = Object.keys(allRecs).filter(function(d) { return d >= fs && d <= fe; }).sort();
+  var rows = buildRowsWithNotas(days, allRecs, null);
+  var css = '<style>body{font-family:Arial,sans-serif;padding:2rem;color:#1a1a18;max-width:700px;margin:0 auto;}' +
+    'h1{font-size:20px;margin-bottom:4px;}.sub{font-size:12px;color:#888;margin-bottom:1.5rem;}' +
+    'table{width:100%;border-collapse:collapse;font-size:13px;}' +
+    'th{text-align:left;font-size:11px;color:#888;text-transform:uppercase;padding:4px 8px;border-bottom:1px solid #ddd;}' +
+    'td{padding:6px 8px;border-bottom:1px solid #f0f0f0;}' +
+    '.badge{display:inline-block;padding:2px 7px;border-radius:4px;font-weight:700;font-size:11px;}' +
+    '.I{background:#1a4d2e;color:#fff}.B{background:#2d7a4f;color:#fff}' +
+    '.R{background:#e07b00;color:#fff}.F{background:#c0392b;color:#fff}' +
+    '.N{background:#9b9b95;color:#fff}.S{background:#2d7a4f;color:#fff}.NAO{background:#c0392b;color:#fff}</style>';
+  var body = '<h1>ENS - PCEs</h1><p class="sub">Periodo: ' + fmtDate(fs) + ' a ' + fmtDate(fe) +
+    (userName ? ' &middot; ' + userName : '') + ' &middot; ' + days.length + ' dias</p>' +
+    '<table><thead><tr><th>Item</th><th>%</th><th>Avaliacao</th></tr></thead><tbody>';
+  rows.forEach(function(r) {
+    var cls = r.nota === 'NAO' ? 'NAO' : r.nota;
+    var lbl = r.nota === 'NAO' ? 'N' : r.nota;
+    body += '<tr><td>' + r.label + '</td><td>' + r.pct + '</td><td><span class="badge ' + cls + '">' + lbl + ' — ' + r.notaDesc + '</span></td></tr>';
+  });
+  body += '</tbody></table>';
+  var html = '<!DOCTYPE html><html><head><meta charset="UTF-8">' + css + '</head><body>' + body + '</body></html>';
+  var w = window.open('', '_blank');
+  w.document.write(html);
+  w.document.close();
+  setTimeout(function() { w.print(); }, 600);
+}
+
+function exportFilterExcel(fs, fe) {
+  var allRecs = JSON.parse(JSON.stringify(records));
+  cycles.forEach(function(c) { Object.assign(allRecs, c.records); });
+  var days = Object.keys(allRecs).filter(function(d) { return d >= fs && d <= fe; }).sort();
+  var rows = buildRowsWithNotas(days, allRecs, null);
+  var per = fmtDate(fs) + ' a ' + fmtDate(fe);
+  var header = [['Usuario','Periodo','Grupo','Item','%','Nota','Descricao']];
+  var data = rows.map(function(r) {
+    return [userName||'', per, r.grupo, r.label, r.pct, r.nota==='NAO'?'N':r.nota, r.notaDesc];
+  });
+  var wb = XLSX.utils.book_new();
+  var ws = XLSX.utils.aoa_to_sheet(header.concat(data));
+  ws['!cols'] = [{wch:16},{wch:26},{wch:6},{wch:32},{wch:8},{wch:8},{wch:12}];
+  XLSX.utils.book_append_sheet(wb, ws, 'Periodo');
+  XLSX.writeFile(wb, (userName ? userName.replace(/\s+/g,'-') + '-' : '') + 'ENS-PCEs-periodo.xlsx');
+}
+
+function exportPNG(blockId, suffix) {
+  var el = document.getElementById(blockId);
+  html2canvas(el, {backgroundColor: '#ffffff', scale: 2}).then(function(canvas) {
+    var a = document.createElement('a');
+    a.download = 'ENS-PCEs-' + suffix + '.png';
+    a.href = canvas.toDataURL('image/png');
+    a.click();
+  });
+}
+
+function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+function saveName() {
+  var v = document.getElementById('inp-name').value.trim();
+  if (!v) return;
+  userName = v;
+  lsSet('userName', userName);
+  document.getElementById('modal-name').style.display = 'none';
+  document.getElementById('greeting').textContent = 'Ola, ' + userName + '!';
+}
+
+function goTo(page) {
+  ['checklist','stats','tema','history'].forEach(function(p, i) {
+    document.getElementById('page-' + p).classList.toggle('active', p === page);
+    document.querySelectorAll('.tab')[i].classList.toggle('active', p === page);
+  });
+  if (page === 'stats')   renderStats();
+  if (page === 'tema')    renderTema();
+  if (page === 'history') renderHistory();
+}
+
+// ---- Init ----
+document.getElementById('today-label').textContent = new Date().toLocaleDateString('pt-BR', {weekday:'long', day:'2-digit', month:'long', year:'numeric'});
+if (userName) {
+  document.getElementById('greeting').textContent = 'Ola, ' + userName + '!';
+  document.getElementById('modal-name').style.display = 'none';
+} else {
+  document.getElementById('modal-name').style.display = 'flex';
+}
+renderList(PCE, 'list-pce');
+renderList(VE, 'list-ve');
 </script>
 </body>
 </html>
