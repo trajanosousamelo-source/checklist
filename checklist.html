@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ENS - PCEs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f5f4f0;
+    --surface: #ffffff;
+    --surface2: #f0eeea;
+    --border: rgba(0,0,0,0.10);
+    --border2: rgba(0,0,0,0.18);
+    --text: #1a1a18;
+    --text2: #6b6b66;
+    --text3: #9b9b95;
+    --green: #2d7a4f;
+    --green-bg: #eaf5ee;
+    --green-border: rgba(45,122,79,0.25);
+    --radius: 10px;
+    --radius-lg: 14px;
+  }
+  body { font-family: 'Lato', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+  .app { max-width: 420px; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
+  .header { margin-bottom: 1.5rem; }
+  .header h1 { font-size: 22px; font-weight: 700; color: var(--text); }
+  .header p { font-size: 13px; color: var(--text2); margin-top: 3px; }
+  .tabs { display: flex; gap: 4px; background: var(--surface2); border-radius: var(--radius); padding: 4px; margin-bottom: 1.5rem; }
+  .tab { flex: 1; padding: 8px 4px; font-size: 13px; font-weight: 700; text-align: center; border: none; background: transparent; color: var(--text2); border-radius: 8px; cursor: pointer; transition: all 0.15s; }
+  .tab.active { background: var(--surface); color: var(--text); border: 0.5px solid var(--border2); }
+  .section-label { font-size: 10px; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: 0.08em; margin: 1.25rem 0 8px; }
+  .section-label:first-of-type { margin-top: 0; }
+  .check-item { display: flex; align-items: center; gap: 12px; padding: 11px 13px; background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius); margin-bottom: 6px; cursor: pointer; transition: all 0.15s; user-select: none; }
+  .check-item:active { transform: scale(0.99); }
+  .check-item.checked { border-color: var(--green-border); background: var(--green-bg); }
+  .check-circle { width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--border2); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+  .check-item.checked .check-circle { background: var(--green); border-color: var(--green); }
+  .checkmark { width: 10px; height: 7px; border-left: 2px solid white; border-bottom: 2px solid white; transform: rotate(-45deg) translateY(-1px); opacity: 0; transition: opacity 0.15s; }
+  .check-item.checked .checkmark { opacity: 1; }
+  .item-label { font-size: 14px; color: var(--text); flex: 1; line-height: 1.3; }
+  .item-freq { font-size: 11px; color: var(--text3); white-space: nowrap; }
+  .save-btn { width: 100%; margin-top: 1.5rem; padding: 13px; background: var(--text); border: none; border-radius: var(--radius); font-size: 14px; font-weight: 700; color: #fff; cursor: pointer; transition: opacity 0.15s; letter-spacing: 0.01em; }
+  .save-btn:active { opacity: 0.85; }
+  .saved-msg { text-align: center; font-size: 12px; color: var(--green); margin-top: 8px; height: 18px; transition: opacity 0.3s; }
+
+  /* Stats */
+  .cycle-box { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 12px 14px; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; }
+  .cycle-since { font-size: 11px; color: var(--text3); margin-bottom: 2px; }
+  .cycle-dates { font-size: 14px; font-weight: 700; color: var(--text); }
+  .new-cycle-btn { font-size: 12px; font-weight: 700; padding: 7px 12px; background: var(--surface2); border: 0.5px solid var(--border2); border-radius: var(--radius); cursor: pointer; color: var(--text); transition: background 0.15s; }
+  .new-cycle-btn:hover { background: var(--border); }
+  .stat-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 11px 13px; margin-bottom: 6px; }
+  .stat-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 7px; }
+  .stat-name { font-size: 13px; font-weight: 700; color: var(--text); }
+  .stat-pct { font-size: 14px; font-weight: 700; color: var(--text); }
+  .bar-bg { height: 5px; background: var(--surface2); border-radius: 3px; }
+  .bar-fill { height: 5px; border-radius: 3px; background: var(--green); transition: width 0.5s ease; }
+  .stat-sub { font-size: 11px; color: var(--text3); margin-top: 5px; }
+
+  /* History */
+  .hist-item { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 12px 14px; margin-bottom: 6px; }
+  .hist-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+  .hist-sub { font-size: 12px; color: var(--text2); }
+  .empty { text-align: center; padding: 3rem 0; font-size: 14px; color: var(--text3); }
+
+  /* Pages */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* Modal */
+  .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); display: flex; align-items: center; justify-content: center; z-index: 200; padding: 1.25rem; }
+  .modal { background: var(--surface); border-radius: var(--radius-lg); border: 0.5px solid var(--border2); padding: 1.5rem; width: 100%; max-width: 360px; }
+  .modal h2 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .modal p { font-size: 14px; color: var(--text2); margin-bottom: 1.25rem; line-height: 1.55; }
+  .modal input { width: 100%; padding: 10px 13px; font-size: 14px; border: 0.5px solid var(--border2); border-radius: var(--radius); background: var(--bg); color: var(--text); margin-bottom: 14px; font-family: inherit; outline: none; }
+  .modal input:focus { border-color: var(--text); }
+  .modal-btns { display: flex; gap: 8px; }
+  .modal-btns button { flex: 1; padding: 10px; border-radius: var(--radius); font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; transition: opacity 0.15s; }
+  .btn-secondary { background: var(--surface2); border: 0.5px solid var(--border2); color: var(--text); }
+  .btn-primary { background: var(--text); border: none; color: #fff; }
+  .btn-primary:active, .btn-secondary:active { opacity: 0.8; }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <h1 id="greeting">ENS - PCEs</h1>
+    <p id="today-label"></p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="goTo('checklist')">Checklist</button>
+    <button class="tab" onclick="goTo('stats')">Estatísticas</button>
+    <button class="tab" onclick="goTo('history')">Histórico</button>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div id="page-checklist" class="page active">
+    <div class="section-label">Pontos concretos de esforço</div>
+    <div id="list-pce"></div>
+    <div class="section-label">Vida em equipe</div>
+    <div id="list-ve"></div>
+    <button class="save-btn" onclick="saveToday()">Salvar registro de hoje</button>
+    <div class="saved-msg" id="saved-msg"></div>
+  </div>
+
+  <!-- STATS -->
+  <div id="page-stats" class="page">
+    <div class="cycle-box">
+      <div>
+        <div class="cycle-since">Ciclo atual iniciado em</div>
+        <div class="cycle-dates" id="cycle-label">—</div>
+      </div>
+      <button class="new-cycle-btn" onclick="openCycleModal()">Novo ciclo</button>
+    </div>
+    <div class="section-label">Pontos concretos de esforço</div>
+    <div id="stats-pce"></div>
+    <div class="section-label">Vida em equipe</div>
+    <div id="stats-ve"></div>
+  </div>
+
+  <!-- HISTORY -->
+  <div id="page-history" class="page">
+    <div id="hist-list"></div>
+  </div>
+</div>
+
+<!-- Modal nome -->
+<div class="overlay" id="modal-name">
+  <div class="modal">
+    <h2>Bem-vindo!</h2>
+    <p>Digite seu nome para começar. Ele ficará salvo neste aparelho.</p>
+    <input type="text" id="inp-name" placeholder="Seu nome" />
+    <div class="modal-btns">
+      <button class="btn-primary" onclick="saveName()">Entrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal novo ciclo -->
+<div class="overlay" id="modal-cycle" style="display:none;">
+  <div class="modal">
+    <h2>Iniciar novo ciclo?</h2>
+    <p>Os dados do ciclo atual serão salvos no histórico e as estatísticas serão zeradas a partir de hoje.</p>
+    <div class="modal-btns">
+      <button class="btn-secondary" onclick="closeModal('modal-cycle')">Cancelar</button>
+      <button class="btn-primary" onclick="newCycle()">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const PCE = [
+  { id:'escuta',    label:'Escuta da Palavra',          freq:'diário' },
+  { id:'meditacao', label:'Meditação',                  freq:'diário' },
+  { id:'oracao',    label:'Oração Conjugal',             freq:'diário' },
+  { id:'regra',     label:'Regra de Vida',               freq:'diário' },
+  { id:'sentar',    label:'Dever de Sentar-se',          freq:'mensal' },
+  { id:'retiro',    label:'Retiro',                      freq:'anual'  },
+];
+const VE = [
+  { id:'magnificat', label:'Magnificat',                 freq:'diário'  },
+  { id:'missa_r',    label:'Missa de Responsabilidade',  freq:'semanal' },
+  { id:'tema',       label:'Tema de Estudos',            freq:'mensal'  },
+  { id:'carta',      label:'Carta Mensal',               freq:'mensal'  },
+  { id:'missa_ens',  label:'Missa Mensal - ENS',         freq:'mensal'  },
+];
+const ALL = [...PCE, ...VE];
+
+const LS = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { localStorage.setItem(k, JSON.stringify(v)); }
+};
+
+function todayStr() { return new Date().toISOString().slice(0,10); }
+function fmtDate(d) {
+  if (!d) return '—';
+  return new Date(d + 'T12:00:00').toLocaleDateString('pt-BR', { day:'2-digit', month:'2-digit', year:'numeric' });
+}
+function weekKey(dateStr) {
+  const d = new Date(dateStr + 'T12:00:00');
+  const jan1 = new Date(d.getFullYear(), 0, 1);
+  return d.getFullYear() + '-W' + Math.ceil(((d - jan1) / 86400000 + jan1.getDay() + 1) / 7);
+}
+
+let userName   = LS.get('userName', null);
+let cycleStart = LS.get('cycleStart', todayStr());
+let records    = LS.get('records', {});
+let cycles     = LS.get('cycles', []);
+let checked    = LS.get('day_' + todayStr(), {});
+
+/* ---- Render checklist ---- */
+function renderList(items, containerId) {
+  const el = document.getElementById(containerId);
+  el.innerHTML = '';
+  items.forEach(item => {
+    const on = !!checked[item.id];
+    const div = document.createElement('div');
+    div.className = 'check-item' + (on ? ' checked' : '');
+    div.innerHTML = `<div class="check-circle"><div class="checkmark"></div></div>
+      <span class="item-label">${item.label}</span>
+      <span class="item-freq">${item.freq}</span>`;
+    div.onclick = () => {
+      checked[item.id] = !checked[item.id];
+      div.classList.toggle('checked', !!checked[item.id]);
+      LS.set('day_' + todayStr(), checked);
+    };
+    el.appendChild(div);
+  });
+}
+
+function saveToday() {
+  records[todayStr()] = { ...checked };
+  LS.set('records', records);
+  const msg = document.getElementById('saved-msg');
+  msg.textContent = 'Salvo com sucesso!';
+  setTimeout(() => msg.textContent = '', 2500);
+}
+
+/* ---- Stats ---- */
+function renderStats() {
+  const days = Object.keys(records).filter(d => d >= cycleStart).sort();
+  document.getElementById('cycle-label').textContent = fmtDate(cycleStart);
+
+  function pct(item) {
+    const count = days.filter(d => records[d][item.id]).length;
+    let denom;
+    if      (item.freq === 'diário')  denom = days.length;
+    else if (item.freq === 'semanal') denom = new Set(days.map(weekKey)).size;
+    else if (item.freq === 'mensal')  denom = new Set(days.map(d => d.slice(0,7))).size;
+    else                              denom = new Set(days.map(d => d.slice(0,4))).size;
+    denom = Math.max(1, denom);
+    return { count, denom, pct: Math.round((count / denom) * 100) };
+  }
+
+  function freqLabel(f) {
+    return { diário:'dias', semanal:'semanas', mensal:'meses', anual:'anos' }[f];
+  }
+
+  function renderGroup(items, id) {
+    document.getElementById(id).innerHTML = items.map(item => {
+      const s = pct(item);
+      return `<div class="stat-card">
+        <div class="stat-row">
+          <span class="stat-name">${item.label}</span>
+          <span class="stat-pct">${s.pct}%</span>
+        </div>
+        <div class="bar-bg"><div class="bar-fill" style="width:${s.pct}%"></div></div>
+        <div class="stat-sub">${s.count} de ${s.denom} ${freqLabel(item.freq)} registrados</div>
+      </div>`;
+    }).join('');
+  }
+
+  renderGroup(PCE, 'stats-pce');
+  renderGroup(VE,  'stats-ve');
+}
+
+/* ---- History ---- */
+function renderHistory() {
+  const el = document.getElementById('hist-list');
+  if (!cycles.length) { el.innerHTML = '<div class="empty">Nenhum ciclo encerrado ainda.</div>'; return; }
+  el.innerHTML = cycles.slice().reverse().map((c, i) => {
+    const n = cycles.length - i;
+    const days = Object.keys(c.records);
+    const overall = Math.round(
+      ALL.map(item => days.filter(d => c.records[d][item.id]).length / Math.max(1, days.length))
+         .reduce((a,b) => a+b, 0) / ALL.length * 100
+    );
+    return `<div class="hist-item">
+      <div class="hist-title">Ciclo ${n} — ${fmtDate(c.start)} a ${fmtDate(c.end)}</div>
+      <div class="hist-sub">${days.length} dias registrados &middot; média geral ${overall}%</div>
+    </div>`;
+  }).join('');
+}
+
+/* ---- Cycle ---- */
+function openCycleModal() { document.getElementById('modal-cycle').style.display = 'flex'; }
+function closeModal(id)    { document.getElementById(id).style.display = 'none'; }
+
+function newCycle() {
+  const days = Object.keys(records).filter(d => d >= cycleStart).sort();
+  if (days.length) {
+    cycles.push({ start: cycleStart, end: days[days.length-1], records: Object.fromEntries(days.map(d => [d, records[d]])) });
+    LS.set('cycles', cycles);
+  }
+  cycleStart = todayStr();
+  LS.set('cycleStart', cycleStart);
+  records = {};
+  LS.set('records', records);
+  closeModal('modal-cycle');
+  renderStats();
+  renderHistory();
+}
+
+/* ---- Name ---- */
+function saveName() {
+  const v = document.getElementById('inp-name').value.trim();
+  if (!v) return;
+  userName = v;
+  LS.set('userName', userName);
+  document.getElementById('modal-name').style.display = 'none';
+  document.getElementById('greeting').textContent = 'Olá, ' + userName + '!';
+}
+
+/* ---- Navigation ---- */
+function goTo(page) {
+  ['checklist','stats','history'].forEach((p, i) => {
+    document.getElementById('page-' + p).classList.toggle('active', p === page);
+    document.querySelectorAll('.tab')[i].classList.toggle('active', p === page);
+  });
+  if (page === 'stats')   renderStats();
+  if (page === 'history') renderHistory();
+}
+
+/* ---- Init ---- */
+document.getElementById('today-label').textContent = new Date().toLocaleDateString('pt-BR', { weekday:'long', day:'2-digit', month:'long', year:'numeric' });
+if (userName) {
+  document.getElementById('greeting').textContent = 'Olá, ' + userName + '!';
+  document.getElementById('modal-name').style.display = 'none';
+} else {
+  document.getElementById('modal-name').style.display = 'flex';
+}
+renderList(PCE, 'list-pce');
+renderList(VE,  'list-ve');
+</script>
+</body>
+</html>
