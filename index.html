@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>ENS - PCEs</title>
 <link rel="apple-touch-icon" href="icon.png"/>
+<link rel="icon" type="image/png" href="icon.png"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-title" content="PCEs"/>
 <meta name="mobile-web-app-capable" content="yes"/>
@@ -747,11 +748,8 @@ function buildFolhaHTML(forExport){
       for(var k=0;k<10;k++){
         var rk=allR[k];var isCurK=rk&&rk.current;
         var bgK=isCurK?'background:rgba(26,79,138,0.05);':'';
-        var notaEu=rk&&rk.notas&&rk.notas[item.id]?rk.notas[item.id].eu:'';
-        var notaCj=rk&&rk.notas&&rk.notas[item.id]?rk.notas[item.id].conjuge:'';
-        // Ela sempre na primeira coluna, Ele na segunda
-        var ne=eu==='Ela'?notaEu:notaCj;
-        var nc=eu==='Ela'?notaCj:notaEu;
+        var ne=rk&&rk.notas&&rk.notas[item.id]?rk.notas[item.id].eu:'';
+        var nc=rk&&rk.notas&&rk.notas[item.id]?rk.notas[item.id].conjuge:'';
         var bgE=ne&&ne!=='-'?notaBg(ne):'transparent';
         var bgC=nc&&nc!=='-'?notaBg(nc):'transparent';
         var colE=(ne&&ne!=='-')?'#fff':'var(--text3)';
@@ -793,8 +791,7 @@ function buildReuniaoModal(eu, conjuge, dataVal){
   var anoAtual=new Date().getFullYear();
   var selAno=document.createElement('select');selAno.id='inp-reuniao-ano';
   selAno.style.cssText='width:100px;padding:8px 10px;font-size:13px;border:0.5px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--text);font-family:inherit;outline:none;';
-  for(var y=anoAtual-1;y<=anoAtual+1;y++){var op=document.createElement('option');op.value=y;op.textContent=y;selAno.appendChild(op);}
-  // Pre-fill from dataVal (formato YYYY-MM-DD ou "Maio / 2026")
+  for(var y=anoAtual-1;y<=anoAtual+2;y++){var op=document.createElement('option');op.value=y;op.textContent=y;selAno.appendChild(op);}
   var mesVal=new Date().getMonth()+1;var anoVal=anoAtual;
   if(dataVal&&dataVal.indexOf('/')>-1){
     var partes=dataVal.split('/');
@@ -821,20 +818,6 @@ function buildReuniaoModal(eu, conjuge, dataVal){
       block.style.cssText='background:var(--surface2);border-radius:var(--radius);padding:8px 10px;margin-bottom:5px;';
       var title=document.createElement('div');title.style.cssText='font-size:12px;font-weight:700;margin-bottom:6px;';title.textContent=item.label;block.appendChild(title);
       var row=document.createElement('div');row.style.cssText='display:flex;gap:10px;';
-      function makeCol(quem, notaAtual, containerId){
-        var col=document.createElement('div');col.style.flex='1';
-        var lbl=document.createElement('div');lbl.style.cssText='font-size:9px;color:var(--text3);margin-bottom:3px;';lbl.textContent=quem;col.appendChild(lbl);
-        var btns=document.createElement('div');btns.style.cssText='display:flex;gap:2px;flex-wrap:wrap;';btns.id=containerId;
-        NOTAS_OPTIONS.forEach(function(opt){
-          var btn=document.createElement('button');btn.textContent=opt;
-          btn.style.cssText='padding:3px 6px;font-size:10px;font-weight:700;border-radius:4px;border:0.5px solid var(--border2);cursor:pointer;';
-          btn.style.background=notaAtual===opt?'var(--text)':'var(--surface)';
-          btn.style.color=notaAtual===opt?'#fff':'var(--text)';
-          btn.onclick=(function(id,k,o){return function(){setNotaTabela(id,k,o);};})(item.id,quemKey,opt);
-          btns.appendChild(btn);
-        });
-        col.appendChild(btns);return col;
-      }
       function makeCol(displayName, quemKey, notaAtual, containerId){
         var col=document.createElement('div');col.style.flex='1';
         var lbl=document.createElement('div');lbl.style.cssText='font-size:9px;color:var(--text3);margin-bottom:3px;';lbl.textContent=displayName;col.appendChild(lbl);
@@ -875,13 +858,16 @@ function confirmarReuniao(){
   var data=mesesNomes[parseInt(selM.value)-1]+' / '+selA.value;
   var existing=window._editandoReuniaoIdx;
   if(existing!==null&&existing!==undefined&&existing>=0){
-    tabelaReunioes[existing].data=data;
-    tabelaReunioes[existing].notas=JSON.parse(JSON.stringify(_reuniaoNotas));
-    lsSet('tabela_reunioes',tabelaReunioes);
-    if(cycles[existing]){
-      cycles[existing].tabelaNotas=JSON.parse(JSON.stringify(_reuniaoNotas));
-      lsSet('cycles',cycles);
+    // Editing existing
+    cycles[existing].tabelaNotas=JSON.parse(JSON.stringify(_reuniaoNotas));
+    cycles[existing].reuniaoData=data;
+    // Update in tabelaReunioes too if exists
+    if(tabelaReunioes[existing]){
+      tabelaReunioes[existing].data=data;
+      tabelaReunioes[existing].notas=JSON.parse(JSON.stringify(_reuniaoNotas));
+      lsSet('tabela_reunioes',tabelaReunioes);
     }
+    lsSet('cycles',cycles);
     window._editandoReuniaoIdx=null;
   } else {
     tabelaReunioes.push({data:data,notas:JSON.parse(JSON.stringify(_reuniaoNotas))});
@@ -926,11 +912,9 @@ function editarReuniaoIdx(idx){
   var r=tabelaReunioes[idx];
   window._editandoReuniaoIdx=idx;
   _reuniaoNotas=JSON.parse(JSON.stringify(r.notas||{}));
-  TABELA_ITEMS.forEach(function(item){
-    if(!_reuniaoNotas[item.id])_reuniaoNotas[item.id]={eu:'-',conjuge:'-'};
-  });
+  TABELA_ITEMS.forEach(function(item){if(!_reuniaoNotas[item.id])_reuniaoNotas[item.id]={eu:'-',conjuge:'-'};});
   document.getElementById('modal-reuniao-titulo').textContent='Editar Reuniao '+(idx+1);
-  document.getElementById('modal-reuniao-sub').textContent='Edite as notas desta reuniao. Suas notas estao na coluna '+tabelaConfig.genero+'.';
+  document.getElementById('modal-reuniao-sub').textContent='Edite as notas desta reuniao.';
   buildReuniaoModal(tabelaConfig.genero,tabelaConfig.conjuge||'Conjuge',r.data);
   document.getElementById('modal-reuniao').style.display='flex';
 }
@@ -1000,11 +984,8 @@ function buildFolhaPDFTable(){
       s+='<tr><td style="padding:3px 5px;border-bottom:1px solid #f0f0f0;">'+item.label+'</td>';
       for(var k=0;k<10;k++){
         var rk=allR[k];
-        var notaEu2=rk&&rk.notas&&rk.notas[item.id]?rk.notas[item.id].eu:'';
-        var notaCj2=rk&&rk.notas&&rk.notas[item.id]?rk.notas[item.id].conjuge:'';
-        var euGen=tabelaConfig?tabelaConfig.genero:'Ela';
-        var ne=euGen==='Ela'?notaEu2:notaCj2;
-        var nc=euGen==='Ela'?notaCj2:notaEu2;
+        var ne=rk&&rk.notas&&rk.notas[item.id]?rk.notas[item.id].eu:'';
+        var nc=rk&&rk.notas&&rk.notas[item.id]?rk.notas[item.id].conjuge:'';
         var bgE=ne?notaBg(ne):'transparent';var bgC=nc?notaBg(nc):'transparent';
         s+='<td style="text-align:center;border-left:1px solid #eee;border-bottom:1px solid #f0f0f0;">'+(ne?'<span style="background:'+bgE+';color:#fff;padding:1px 3px;border-radius:2px;font-weight:700;font-size:9px;">'+ne+'</span>':'')+'</td>';
         s+='<td style="text-align:center;border-bottom:1px solid #f0f0f0;">'+(nc?'<span style="background:'+bgC+';color:#fff;padding:1px 3px;border-radius:2px;font-weight:700;font-size:9px;">'+nc+'</span>':'')+'</td>';
